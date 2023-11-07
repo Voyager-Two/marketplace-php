@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+hooks:
+  ApplicationStop:
+    - location: deployment/app_stop.sh
+      runas: ubuntu
+  AfterInstall:
+    - location: deployment/app_install.sh
+      runas: ubuntu
+  ApplicationStart:
+    - location: deployment/app_start.sh
+      runas: ubuntu
